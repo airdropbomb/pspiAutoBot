@@ -436,7 +436,7 @@ async function main() {
   const noType = process.argv.includes('--no-type');
   let accounts = [];
   try {
-    const accountsData = await fs.readFile('accounts.txt', 'utf8');
+    const accountsData = await fs.readFile('pk.txt', 'utf8');
     const lines = accountsData.split('\n').filter(line => line.trim() !== '');
     for (let i = 0; i < lines.length; i++) {
       const privateKey = lines[i].trim();
@@ -449,13 +449,13 @@ async function main() {
       accounts.push({ address: wallet.address, privateKey });
     }
   } catch (err) {
-    console.log(chalk.red('✗ File accounts.txt tidak ditemukan atau kosong! Pastikan berisi privateKey per baris.'));
+    console.log(chalk.red('✗ File pk.txt tidak ditemukan atau kosong! Pastikan berisi privateKey per baris.'));
     rl.close();
     return;
   }
 
   if (accounts.length === 0) {
-    console.log(chalk.red('✗ Tidak ada akun valid di accounts.txt!'));
+    console.log(chalk.red('✗ Tidak ada akun valid di pk.txt!'));
     rl.close();
     return;
   }
