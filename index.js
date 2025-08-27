@@ -462,16 +462,16 @@ async function main() {
 
   let messages = [];
   try {
-    const msgData = await fs.readFile('pesan.txt', 'utf8');
+    const msgData = await fs.readFile('message.txt', 'utf8');
     messages = msgData.split('\n').filter(line => line.trim() !== '').map(line => line.replace(/\r/g, ''));
   } catch (err) {
-    console.log(chalk.red('✗ File pesan.txt not found or empty!'));
+    console.log(chalk.red('✗ File message.txt not found or empty!'));
     rl.close();
     return;
   }
 
   if (messages.length === 0) {
-    console.log(chalk.red('✗ File pesan.txt is empty!'));
+    console.log(chalk.red('✗ File message.txt is empty!'));
     rl.close();
     return;
   }
@@ -516,3 +516,4 @@ async function main() {
 }
 
 main();
+
